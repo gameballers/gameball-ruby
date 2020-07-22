@@ -10,6 +10,7 @@ require "./gameball/request"
 require "./gameball/helper"
 require "./gameball/resources/player"
 require "./gameball/resources/event"
+require "./gameball/resources/transaction"
 
 module Gameball
     @api_base = "https://gb-api.azurewebsites.net"
