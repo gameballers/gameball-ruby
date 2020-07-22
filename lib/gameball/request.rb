@@ -3,12 +3,15 @@ module Gameball
         extend self
         def request(verb,path,body={})
         #check for api_version and key and throw exceptions
-            uri=URI(Gameball.api_base+'/api'+'/'+Gameball.api_version+path)
+        uri=URI(Gameball.api_base+'/api'+'/'+Gameball.api_version+path)
 
             https = Net::HTTP.new(uri.host,uri.port)
-
+            https.max_retries=Gameball.max_retries
+            https.read_timeout=Gameball.read_timeout
+            https.keep_alive_timeout=Gameball.keep_alive_timeout
             https.use_ssl = true
-            case verb.downcase
+        
+              case verb.downcase
             when "post"
                 req = Net::HTTP::Post.new(uri.path, initheader = {'Content-Type' =>'application/json'})
 
@@ -24,9 +27,12 @@ module Gameball
             else 
                 puts "Please Provide a valid verb" # will later throw an exception
             end
+            if body != {}
+                puts body
+                req.body=body.to_json
+            end
             req['APIKey']=Gameball.api_key
             res=https.request(req)
-
             return res
             
         end
