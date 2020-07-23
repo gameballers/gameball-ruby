@@ -4,12 +4,16 @@ module Gameball
         def hashBody(playerUniqueId:,transactionTime:"",amount:"")
             # Check if transaction Key is provided else raise Exc
             if !Gameball.transaction_key
-            puts "Please add the transaction key" # Raise exception 
+            raise Gameball::AuthorizationError.new("Please provide transaction_key, try Gameball::transaction_key='your_key'") # Raise exception 
             else
                 if transactionTime=="" 
                     formatted_time=""
                 else
-                    formatted_time=transactionTime.strftime("%y%m%d%H%M%S")
+                    # begin
+                      formatted_time=transactionTime.strftime("%y%m%d%H%M%S")
+                    # rescue  => exception
+                        
+                    # end
                 end
             end
             str=playerUniqueId+":"+formatted_time+":"+amount.to_s+":"+Gameball.transaction_key
@@ -17,12 +21,19 @@ module Gameball
             return Digest::SHA1.hexdigest (str)
         end
         def extractAttributesToHash(body)
-            # check if hashing attributes are in body to prevent errors then raise exceptions
+            if !body[:playerUniqueId]
+                raise Gameball::MissingParametersError.new("Missing body parameter : playerUniqueId")
+            end
             playerUniqueId=body[:playerUniqueId]
             amount=body[:amount]
             transactionTime=body[:transactionTime]
+            begin
             body[:transactionTime]=transactionTime.iso8601
-            body["bodyHashed"]=Gameball::Helper::hashBody(playerUniqueId:playerUniqueId,amount:amount,transactionTime:transactionTime)
+
+            rescue NoMethodError => exception
+                raise Gameball::InvalidDateFormatError.new
+            end
+            body["bodyHashed"]=Gameball::Helper::hashBody(playerUniqueId:playerUniqueId,amount:(amount||""),transactionTime:(transactionTime||""))
             body
         end
         

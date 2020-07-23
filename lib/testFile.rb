@@ -4,7 +4,7 @@ Gameball::api_version="v1.0"
 Gameball::transaction_key="26e1967d89114388bdd1772587c336c8"
 # res=Gameball::Transaction.balance("uniqueKey00")
 res=Gameball::Transaction.hold({
-  playerUniqueId:"uniqueKey00",
+  # playerUniqueId:"uniqueKey00",
   holdReference:"a4bb156c-58aa-4d33-b1b5-4477423f8ad3",
   transactionTime:Time.now.utc
 })

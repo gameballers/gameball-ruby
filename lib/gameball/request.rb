@@ -3,6 +3,9 @@ module Gameball
         extend self
         def request(verb,path,body={})
         #check for api_version and key and throw exceptions
+        if  !Gameball.api_key
+            raise Gameball::AuthorizationError.new("Please provide the api_key before making a request, try Gameball::api_key='your_key'")
+        end
         uri=URI(Gameball.api_base+'/api'+'/'+Gameball.api_version+path)
 
             https = Net::HTTP.new(uri.host,uri.port)
@@ -29,7 +32,12 @@ module Gameball
             end
             if body != {}
                 puts body
-                req.body=body.to_json
+                # begin
+                req.body=body.to_json    
+                # rescue JSON::ParserError => exception
+                    
+                # end
+                
             end
             req['APIKey']=Gameball.api_key
             res=https.request(req)
