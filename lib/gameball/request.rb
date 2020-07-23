@@ -33,7 +33,8 @@ module Gameball
             if body != {}
                 puts body
                 # begin
-                req.body=body.to_json    
+                req.body=body.to_json 
+                p req.body   
                 # rescue JSON::ParserError => exception
                     
                 # end
