@@ -7,7 +7,8 @@ require 'digest/sha1'
 require 'json'
 require "./gameball/getBot"
 require "./gameball/request"
-require "./gameball/helper"
+require "./gameball/helpers/helper"
+require "./gameball/helpers/validation"
 require "./gameball/resources/player"
 require "./gameball/resources/event"
 require "./gameball/resources/transaction"

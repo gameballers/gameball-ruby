@@ -21,9 +21,6 @@ module Gameball
             return Digest::SHA1.hexdigest (str)
         end
         def extractAttributesToHash(body)
-            if !body[:playerUniqueId]
-                raise Gameball::MissingParametersError.new("Missing body parameter : playerUniqueId")
-            end
             playerUniqueId=body[:playerUniqueId]
             amount=body[:amount]
             transactionTime=body[:transactionTime]

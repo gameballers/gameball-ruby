@@ -2,10 +2,13 @@ module Gameball
     class Player
         # include Gameball::Request
         def self.create (customerBody)
+            Gameball::Validations.validate(customerBody,['playerAttributes','playerUniqueId'],[])
+            Gameball::Validations.validate(customerBody[:playerAttributes],['displayName','firstName','lastName','email','gender','mobileNumber','dateOfBirth','joinDate'],['custom'])
             begin
-            customerBody[:joinDate]=customerBody[:joined_date].iso8601
-            customerBody[:dateOfBirth]=customerBody[:dateOfBirth].iso8601    
+            customerBody[:playerAttributes][:joinDate]=customerBody[:playerAttributes][:joinDate].iso8601
+            customerBody[:playerAttributes][:dateOfBirth]=customerBody[:playerAttributes][:dateOfBirth].iso8601    
             rescue NoMethodError => exception
+                p exception
                 raise Gameball::InvalidDateFormatError.new
             end
             
