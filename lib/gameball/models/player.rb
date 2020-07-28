@@ -1,5 +1,7 @@
 module Gameball
     class Player
+        def initialize 
+        end
         # include Gameball::Request
         def self.initialize_player (customerBody)
             Gameball::Utils.validate(customerBody,['playerAttributes','playerUniqueId'],[])

@@ -6,20 +6,18 @@ require 'Time'
 require 'digest/sha1'
 require 'json'
 require 'async'
-require 'sinatra'
-require 'async/http/internet'
-require "./gameball/getBot"
-require "./gameball/utils/request"
-require "./gameball/utils/helper"
-require "./gameball/utils/validation"
-require "./gameball/models/player"
-require "./gameball/models/event"
-require "./gameball/models/transaction"
-require "./gameball/models/referral"
-require "./gameball/exceptions/authorizationException"
-require "./gameball/exceptions/invalidDateFormatException"
-require "./gameball/exceptions/missingParametersException"
-require "./gameball/exceptions/gameballException"
+require_relative "./gameball/getBot"
+require_relative "./gameball/utils/request"
+require_relative "./gameball/utils/helper"
+require_relative "./gameball/utils/validation"
+require_relative "./gameball/models/player"
+require_relative "./gameball/models/event"
+require_relative "./gameball/models/transaction"
+require_relative "./gameball/models/referral"
+require_relative "./gameball/exceptions/authorizationException"
+require_relative "./gameball/exceptions/invalidDateFormatException"
+require_relative "./gameball/exceptions/missingParametersException"
+require_relative "./gameball/exceptions/gameballException"
 
 
 module Gameball
