@@ -5,17 +5,21 @@ require "uri"
 require 'Time'
 require 'digest/sha1'
 require 'json'
+require 'async'
+require 'sinatra'
+require 'async/http/internet'
 require "./gameball/getBot"
-require "./gameball/request"
-require "./gameball/helpers/helper"
-require "./gameball/helpers/validation"
-require "./gameball/resources/player"
-require "./gameball/resources/event"
-require "./gameball/resources/transaction"
-require "./gameball/resources/referral"
+require "./gameball/utils/request"
+require "./gameball/utils/helper"
+require "./gameball/utils/validation"
+require "./gameball/models/player"
+require "./gameball/models/event"
+require "./gameball/models/transaction"
+require "./gameball/models/referral"
 require "./gameball/exceptions/authorizationException"
 require "./gameball/exceptions/invalidDateFormatException"
 require "./gameball/exceptions/missingParametersException"
+require "./gameball/exceptions/gameballException"
 
 
 module Gameball

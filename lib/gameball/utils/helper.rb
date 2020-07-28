@@ -1,5 +1,5 @@
 module Gameball
-    module Helper
+    module Utils
         extend self
         def hashBody(playerUniqueId:,transactionTime:"",amount:"")
             # Check if transaction Key is provided else raise Exc
@@ -30,7 +30,7 @@ module Gameball
             rescue NoMethodError => exception
                 raise Gameball::InvalidDateFormatError.new
             end
-            body["bodyHashed"]=Gameball::Helper::hashBody(playerUniqueId:playerUniqueId,amount:(amount||""),transactionTime:(transactionTime||""))
+            body["bodyHashed"]=Gameball::Utils::hashBody(playerUniqueId:playerUniqueId,amount:(amount||""),transactionTime:(transactionTime||""))
             body
         end
         
