@@ -1,5 +1,5 @@
 module Gameball
-  module Validations
+  module Utils
     extend self
       def validate (hash,required,optional)
         errors=[]
