@@ -8,7 +8,7 @@ module Gameball
             }
             res=Gameball::Utils::request("post","/integrations/transaction/balance",body)
             unless res.kind_of? Net::HTTPSuccess
-                raise Gameball::GameballException.new(res.body) # use custom message
+                raise Gameball::GameballError.new(res.body) # use custom message
             else 
                 return res
             end
@@ -21,7 +21,7 @@ module Gameball
             body=Gameball::Utils::extractAttributesToHash(body)
             res=Gameball::Utils::request("post","/integrations/transaction/hold",body)
             unless res.kind_of? Net::HTTPSuccess
-                raise Gameball::GameballException.new(res.body) # use custom message
+                raise Gameball::GameballError.new(res.body) # use custom message
             else 
                 return res
             end
@@ -32,7 +32,7 @@ module Gameball
             body=Gameball::Utils::extractAttributesToHash(body)
             res=Gameball::Utils::request("post","/integrations/transaction/redeem",body)
             unless res.kind_of? Net::HTTPSuccess
-                raise Gameball::GameballException.new(res.body) # use custom message
+                raise Gameball::GameballError.new(res.body) # use custom message
             else 
                 return res
             end
@@ -42,7 +42,7 @@ module Gameball
             body=Gameball::Utils::extractAttributesToHash(body)
             res=Gameball::Utils::request("post","/integrations/transaction/cancel",body)
             unless res.kind_of? Net::HTTPSuccess
-                raise Gameball::GameballException.new(res.body) # use custom message
+                raise Gameball::GameballError.new(res.body) # use custom message
             else 
                 return res
             end
@@ -55,7 +55,7 @@ module Gameball
             body=Gameball::Utils::extractAttributesToHash(body)
             res=Gameball::Utils::request("post","/integrations/transaction/reward",body)
             unless res.kind_of? Net::HTTPSuccess
-                raise Gameball::GameballException.new(res.body) # use custom message
+                raise Gameball::GameballError.new(res.body) # use custom message
             else 
                 return true
             end
@@ -67,7 +67,7 @@ module Gameball
             body=Gameball::Utils::extractAttributesToHash(body)
             res=Gameball::Utils::request("post","/integrations/transaction/hold",body)
             unless res.kind_of? Net::HTTPSuccess
-                raise Gameball::GameballException.new(res.body) # use custom message
+                raise Gameball::GameballError.new(res.body) # use custom message
             else 
                 return res
             end

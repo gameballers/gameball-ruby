@@ -14,9 +14,6 @@ require_relative "./gameball/models/player"
 require_relative "./gameball/models/event"
 require_relative "./gameball/models/transaction"
 require_relative "./gameball/models/referral"
-require_relative "./gameball/exceptions/authorizationException"
-require_relative "./gameball/exceptions/invalidDateFormatException"
-require_relative "./gameball/exceptions/missingParametersException"
 require_relative "./gameball/exceptions/gameballException"
 
 

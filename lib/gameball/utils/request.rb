@@ -4,7 +4,7 @@ module Gameball
         def request(verb,path,body={})
         #check for api_version and key and throw exceptions
         if  !Gameball.api_key
-            raise Gameball::AuthorizationError.new("Please provide the api_key before making a request, try Gameball::api_key='your_key'")
+            raise Gameball::GameballError.new("Please provide the api_key before making a request, try Gameball::api_key='your_key'")
         end
         uri=URI(Gameball.api_base+'/api'+'/'+Gameball.api_version+path)
 
@@ -49,7 +49,7 @@ module Gameball
         def request_async(verb,path,body={})
         #check for api_version and key and throw exceptions
         if  !Gameball.api_key
-            raise Gameball::AuthorizationError.new("Please provide the api_key before making a request, try Gameball::api_key='your_key'")
+            raise Gameball::GameballError.new("Please provide the api_key before making a request, try Gameball::api_key='your_key'")
         end
         uri=URI(Gameball.api_base+'/api'+'/'+Gameball.api_version+path)
 

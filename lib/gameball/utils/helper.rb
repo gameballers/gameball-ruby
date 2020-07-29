@@ -4,7 +4,7 @@ module Gameball
         def hashBody(playerUniqueId:,transactionTime:"",amount:"")
             # Check if transaction Key is provided else raise Exc
             if !Gameball.transaction_key
-            raise Gameball::AuthorizationError.new("Please provide transaction_key, try Gameball::transaction_key='your_key'") # Raise exception 
+            raise Gameball::GameballError.new("Please provide transaction_key, try Gameball::transaction_key='your_key'") # Raise exception 
             else
                 if transactionTime=="" 
                     formatted_time=""
@@ -28,7 +28,7 @@ module Gameball
             body[:transactionTime]=transactionTime.iso8601
 
             rescue NoMethodError => exception
-                raise Gameball::InvalidDateFormatError.new
+                raise Gameball::GameballError.new
             end
             body["bodyHashed"]=Gameball::Utils::hashBody(playerUniqueId:playerUniqueId,amount:(amount||""),transactionTime:(transactionTime||""))
             body
