@@ -10,13 +10,13 @@ describe Gameball::Player do
     it "Initializes a new Gameball player" do
         Gameball::api_key="7c7636658209418c9a82306a421f76a5"
         Gameball::api_version="v2.0"
-        playerUniqueId=rand 50000..100000
+        playerUniqueId=rand 50000..10000000
         res=Gameball::Player.initialize_player({playerUniqueId:playerUniqueId,playerAttributes:{displayName:"Souidan",firstName:"Souidan1",lastName:"Souidan2",email:"alisouidan@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:Time.now.utc,joinDate:Time.now.utc}})
         expect(res.code).to eq('200')
     end
     context "When user doesn't include api_key" do
         it "Throws GameballError" do
-            playerUniqueId=rand 50000..100000
+            playerUniqueId=rand 50000..10000000
             body={playerUniqueId:playerUniqueId,playerAttributes:{displayName:"Souidan",firstName:"Souidan1",lastName:"Souidan2",email:"alisouidan@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:Time.now.utc,joinDate:Time.now.utc}}
             expect{Gameball::Player.initialize_player(body)}.to raise_error(Gameball::GameballError)
         end
@@ -25,14 +25,14 @@ describe Gameball::Player do
         it "Throws GameballError when removing playerUniqueId" do
             Gameball::api_key="7c7636658209418c9a82306a421f76a5"
             Gameball::api_version="v2.0"
-            playerUniqueId=rand 50000..100000
+            playerUniqueId=rand 50000..10000000
             body={playerAttributes:{displayName:"Souidan",firstName:"Souidan1",lastName:"Souidan2",email:"alisouidan@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:Time.now.utc,joinDate:Time.now.utc}}
             expect{Gameball::Player.initialize_player(body)}.to raise_error(Gameball::GameballError)
         end
         it "Throws GameballError when removing displayName" do
             Gameball::api_key="7c7636658209418c9a82306a421f76a5"
             Gameball::api_version="v2.0"
-            playerUniqueId=rand 50000..100000
+            playerUniqueId=rand 50000..10000000
             body={playerUniqueId:playerUniqueId,playerAttributes:{firstName:"Souidan1",lastName:"Souidan2",email:"alisouidan@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:Time.now.utc,joinDate:Time.now.utc}}
             expect{Gameball::Player.initialize_player(body)}.to raise_error(Gameball::GameballError)
         end
@@ -41,7 +41,7 @@ describe Gameball::Player do
         it "Throws GameballError" do
             Gameball::api_key="7c7636658209418c9a82306a421f76a5"
             Gameball::api_version="v2.0"
-            playerUniqueId=rand 50000..100000
+            playerUniqueId=rand 50000..10000000
             body={playerUniqueId:playerUniqueId,playerAttributes:{displayName:"Souidan",firstName:"Souidan1",lastName:"Souidan2",email:"alisouidan@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:"0123",joinDate:Time.now.utc}}
             expect{Gameball::Player.initialize_player(body)}.to raise_error(Gameball::GameballError)
         end
@@ -71,15 +71,13 @@ describe Gameball::Referral do
     it "Creates new player then new referral" do
         Gameball::api_key="7c7636658209418c9a82306a421f76a5"
         Gameball::api_version="v2.0"
-        playerUniqueId=rand 50000..100000
+        playerUniqueId=rand 50000..10000000
         res=Gameball::Player.initialize_player({playerUniqueId:playerUniqueId,playerAttributes:{displayName:"Souidan",firstName:"Souidan1",lastName:"Souidan2",email:"alisouidan@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:Time.now.utc,joinDate:Time.now.utc}})
         res=Gameball::Referral.create_referral({
         playerCode:"Uen3FBBCB65D2Q",
         playerUniqueId:playerUniqueId
     })
-
-    p res.body
-        expect(res.code).to eq("200")
+        expect(res).to eq(true)
     end
 end
 end
