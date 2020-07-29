@@ -11,12 +11,12 @@ module Gameball
             customerBody[:playerAttributes][:dateOfBirth]=customerBody[:playerAttributes][:dateOfBirth].iso8601    
             rescue NoMethodError => exception
                 p exception
-                raise Gameball::InvalidDateFormatError.new
+                raise Gameball::GameballError.new("Invalid Date Format, please use UTC format")
             end
             
             res=Gameball::Utils::request("post","/integrations/initializeplayer",customerBody)
             unless res.kind_of? Net::HTTPSuccess
-                raise Gameball::GameballException.new(res) # use custom message
+                raise Gameball::GameballError.new(res) # use custom message
             else 
                 return res
             end
