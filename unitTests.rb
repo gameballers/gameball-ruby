@@ -53,10 +53,70 @@ describe Gameball::Event do
         Gameball::api_key="7c7636658209418c9a82306a421f76a5"
         Gameball::api_version="v2.0"
         res=Gameball::Event.sendEvent({
-        events:{view_product_page:{customer_id:"123",product_id:"123",product_title:"title",product_vendor:"vendor",shop_name:"shop"}},
-        playerUniqueId:"uinqueKeys123"})
+   events:{
+      place_order:{
+         total_amount:"100",
+         category:[
+            "electronics",
+            "cosmetics"
+     	]
+  	},
+      review:{}
+   },
+   playerUniqueId:"player123"
+}
+)
         expect(res).to eq(true)
     end 
+    it "create new event 2" do 
+        Gameball::api_key="7c7636658209418c9a82306a421f76a5"
+        Gameball::api_version="v2.0"
+        res=Gameball::Event.sendEvent({
+   events:{
+      reserve:{
+         rooms:2
+  	}
+   },
+   playerUniqueId:"player123",
+   playerAttributes:{
+      displayName:"Jon Snow",
+      email:"jon.snow@example.com",
+      dateOfBirth:"1980-09-19T00:00:00.000Z",
+      joinDate:"2019-09-19T21:06:29.158Z"
+   }
+}
+
+)
+        expect(res).to eq(true)
+    end
+    it "create new event 3" do 
+        Gameball::api_key="7c7636658209418c9a82306a421f76a5"
+        Gameball::api_version="v2.0"
+        res=Gameball::Event.sendEvent({
+   events:{
+      reserve:{
+         rooms:2
+  	}
+   },
+   playerUniqueId:" player123",
+   playerAttributes:{
+      displayName:" Jon Snow",
+      email:"jon.snow@example.com",
+      dateOfBirth:"1980-09-19T00:00:00.000Z",
+      joinDate:"2019-09-19T21:06:29.158Z",
+  	custom:{
+         location:"Miami",
+         graduationDate:"2018-07-04T21:06:29.158Z",
+         isMarried:false
+  	}
+ 
+   }
+}
+
+
+)
+        expect(res).to eq(true)
+    end
     # it "create new event with optional parameters" do 
     #     Gameball::api_key="7c7636658209418c9a82306a421f76a5"
     #     Gameball::api_version="v2.0"
