@@ -1,8 +1,9 @@
 require 'gameball'
 Gameball.api_key="7c7636658209418c9a82306a421f76a5"
 Gameball.api_version="v2.0"
+Gameball::transaction_key="26e1967d89114388bdd1772587c336c8"
 # Events
-# Example 1
+# Example 1 
 Gameball::Event.send_event({
 	events:{
 		place_order:{

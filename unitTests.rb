@@ -29,11 +29,11 @@ describe Gameball::Player do
             body={playerAttributes:{displayName:"Souidan",firstName:"Souidan1",lastName:"Souidan2",email:"alisouidan@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:Time.now.utc,joinDate:Time.now.utc}}
             expect{Gameball::Player.initialize_player(body)}.to raise_error(Gameball::GameballError)
         end
-        it "Throws GameballError when removing displayName" do
+        it "Throws GameballError when sending empty body" do
             Gameball::api_key="7c7636658209418c9a82306a421f76a5"
             Gameball::api_version="v2.0"
             playerUniqueId=rand 50000..10000000
-            body={playerUniqueId:playerUniqueId,playerAttributes:{firstName:"Souidan1",lastName:"Souidan2",email:"alisouidan@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:Time.now.utc,joinDate:Time.now.utc}}
+            body={}
             expect{Gameball::Player.initialize_player(body)}.to raise_error(Gameball::GameballError)
         end
     end
@@ -133,11 +133,13 @@ describe Gameball::Referral do
         Gameball::api_version="v2.0"
         playerUniqueId=rand 50000..10000000
         res=Gameball::Player.initialize_player({playerUniqueId:playerUniqueId,playerAttributes:{displayName:"Souidan",firstName:"Souidan1",lastName:"Souidan2",email:"alisouidan@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:Time.now.utc,joinDate:Time.now.utc}})
+        playerCode=JSON.parse(res.body)['referralCode']
         res=Gameball::Referral.create_referral({
-        playerCode:"Uen3FBBCB65D2Q",
+        playerCode:playerCode,
         playerUniqueId:playerUniqueId
     })
         expect(res).to eq(true)
     end
 end
+
 end

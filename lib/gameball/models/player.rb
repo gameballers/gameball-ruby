@@ -3,7 +3,6 @@ module Gameball
         # include Gameball::Request
         def self.initialize_player (customerBody)
             Gameball::Utils.validate(customerBody,['playerAttributes','playerUniqueId'],[])
-            # Gameball::Utils.validate(customerBody[:playerAttributes],['displayName','firstName','lastName','email','gender','mobileNumber','dateOfBirth','joinDate'],['custom'])
             begin
             customerBody[:playerAttributes][:joinDate]=customerBody[:playerAttributes][:joinDate].iso8601
             customerBody[:playerAttributes][:dateOfBirth]=customerBody[:playerAttributes][:dateOfBirth].iso8601    

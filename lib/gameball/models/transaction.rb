@@ -49,9 +49,6 @@ module Gameball
         end
          def self.reward_points(body)
             Gameball::Utils.validate(body,['playerUniqueId','amount','transactionOnClientSystemId','transactionTime'],['playerAttributes'])
-            if body.has_key?(:playerAttributes)
-            # Gameball::Utils.validate(body[:playerAttributes],['displayName','firstName','lastName','email','gender','mobileNumber','dateOfBirth','joinDate'],['custom'])
-            end
             body=Gameball::Utils::extractAttributesToHash(body)
             res=Gameball::Utils::request("post","/integrations/transaction/reward",body)
             unless res.kind_of? Net::HTTPSuccess
