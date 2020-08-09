@@ -1,4 +1,4 @@
-# Gameball Python SDK
+# Gameball Ruby SDK
 The Gameball Ruby SDK provides convenient access to the Gameball API from applications written in the Ruby language.
 
 ## Documentation
@@ -24,9 +24,10 @@ The SDK needs to be configured with your account's API & Transaction keys availa
 
 ```ruby
 require 'gameball'
+
 Gameball.api_key="api_key" 
 Gameball.api_version="v2.0" # Or latest
-Gameball.transaction_key="transaction_key"
+Gameball.transaction_key="transaction_key" 
 ```
 
 ### Example
