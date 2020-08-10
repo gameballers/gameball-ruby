@@ -13,7 +13,7 @@ module Gameball
       end
     end
     def self.hold_points(body)
-      puts body
+      # puts body
       # check if attributes are available
       Gameball::Utils.validate(body, ["playerUniqueId", "amount", "transactionTime"], ["otp"])
 

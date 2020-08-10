@@ -25,13 +25,13 @@ module Gameball
       when "delete"
         req = Net::HTTP::Delete.new(uri.path, initheader = { "Content-Type" => "application/json" })
       else
-        puts "Please Provide a valid verb" # will later throw an exception
+        raise Gameball::GameballException.new("Please provide a valid HTTP Verb") # will later throw an exception
       end
       if body != {}
-        puts body
+        # puts body
         # begin
         req.body = body.to_json
-        p req.body
+        # p req.body
         # rescue JSON::ParserError => exception
 
         # end
@@ -68,10 +68,10 @@ module Gameball
         puts "Please Provide a valid verb" # will later throw an exception
       end
       if body != {}
-        puts body
+        # puts body
         # begin
         req.body = body.to_json
-        p req.body
+        # p req.body
         # rescue JSON::ParserError => exception
 
         # end

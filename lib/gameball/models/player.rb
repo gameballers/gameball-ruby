@@ -7,7 +7,7 @@ module Gameball
         customerBody[:playerAttributes][:joinDate] = customerBody[:playerAttributes][:joinDate].iso8601
         customerBody[:playerAttributes][:dateOfBirth] = customerBody[:playerAttributes][:dateOfBirth].iso8601
       rescue NoMethodError => exception
-        p exception
+        # p exception
         raise Gameball::GameballError.new("Invalid Date Format, Please use Time and Date objects")
       end
 

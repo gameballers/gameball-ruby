@@ -18,7 +18,7 @@ module Gameball
         end
       end
       str = playerUniqueId + ":" + formatted_time + ":" + amount.to_s + ":" + Gameball.transaction_key
-      puts str
+      # puts str
       return Digest::SHA1.hexdigest (str)
     end
 

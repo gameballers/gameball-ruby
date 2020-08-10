@@ -1,5 +1,5 @@
 require "rspec/autorun"
-require "gameball"
+require "./lib/gameball"
 
 describe Gameball::Player do
   before (:each) {
@@ -258,13 +258,66 @@ describe Gameball::Event do
       })
 
       holdReference = JSON.parse(res.body)["holdReference"]
+      transactionOnClientSystemId = rand 50000..10000000
       res = Gameball::Transaction.redeem_points({
         holdReference: holdReference,
         playerUniqueId: "player123",
         amount: 2,
-        transactionOnClientSystemId: 12,
+        transactionOnClientSystemId: transactionOnClientSystemId,
         transactionTime: Time.now.utc,
       })
+      expect(res.code).to eq("200")
+    end
+    it "Reverses a transaction" do
+      Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
+      Gameball::transaction_key = "26e1967d89114388bdd1772587c336c8"
+      Gameball::api_version = "v2.0"
+      res = Gameball::Transaction.hold_points({
+        playerUniqueId: "player123",
+        amount: 2,
+        transactionTime: Time.now.utc,
+      })
+      transactionOnClientSystemId = rand 50000..10000000
+
+      holdReference = JSON.parse(res.body)["holdReference"]
+      res = Gameball::Transaction.redeem_points({
+        holdReference: holdReference,
+        playerUniqueId: "player123",
+        amount: 2,
+        transactionOnClientSystemId: transactionOnClientSystemId,
+        transactionTime: Time.now.utc,
+      })
+      res = Gameball::Transaction.reverse_transaction({
+        playerUniqueId: "player123",
+        transactionOnClientSystemId: transactionOnClientSystemId,
+        reversedTransactionOnClientSystemId: transactionOnClientSystemId,
+        transactionTime: Time.now.utc,
+      })
+      expect(res.code).to eq("200")
+    end
+    it "Reverses a hold" do
+      Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
+      Gameball::transaction_key = "26e1967d89114388bdd1772587c336c8"
+      Gameball::api_version = "v2.0"
+      res = Gameball::Transaction.hold_points({
+        playerUniqueId: "player123",
+        amount: 2,
+        transactionTime: Time.now.utc,
+      })
+
+      holdReference = JSON.parse(res.body)["holdReference"]
+      res = Gameball::Transaction.reverse_hold({
+        playerUniqueId: "player123",
+        holdReference: holdReference,
+        transactionTime: Time.now.utc,
+      })
+      expect(res.code).to eq("200")
+    end
+    it "Gets a Player's balance" do
+      Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
+      Gameball::transaction_key = "26e1967d89114388bdd1772587c336c8"
+      Gameball::api_version = "v2.0"
+      res = Gameball::Transaction.get_player_balance("player123")
       expect(res.code).to eq("200")
     end
   end
