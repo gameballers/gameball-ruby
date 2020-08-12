@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://mygemserver.com"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
-  spec.add_dependency 'rake','= 12.0'
-  spec.add_dependency 'rspec','= 3.0'
+  spec.add_dependency 'rake','>= 12.0'
+  spec.add_dependency 'rspec','>= 3.0'
   # spec.metadata["allowed_push_host"] = "https://github.com/Alsouidan/alphasdk"
 
   spec.metadata["homepage_uri"] = spec.homepage

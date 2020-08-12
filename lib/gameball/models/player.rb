@@ -24,11 +24,7 @@ module Gameball
     end
     def self.get_player_info(playerUniqueId)
       body = { playerUniqueId: playerUniqueId }
-<<<<<<< HEAD
-      body["bodyHashed"] = Gameball::Utils::hashBody(playerUniqueId: playerUniqueId)
-=======
       body["hash"] = Gameball::Utils::hashBody(playerUniqueId: playerUniqueId)
->>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
       res = Gameball::Utils::request("post", "/integrations/Player/Info", body)
       unless res.kind_of? Net::HTTPSuccess
         if res.kind_of? Net::HTTPInternalServerError

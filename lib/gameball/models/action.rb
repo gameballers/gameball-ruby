@@ -1,12 +1,10 @@
 module Gameball
   class Action
-<<<<<<< HEAD
-    def send_action(body)
-      Gameball::Utils.validate(body, ["playerUniqueId"], ["playerAttributes", "events", "pointsTransaction"])
-=======
     def self.send_action(body)
+      # Validating keys in incoming body
       Gameball::Utils.validate(body, ["playerUniqueId"], ["playerAttributes", "events", "pointsTransaction"])
       if body.has_key? (:pointsTransaction)
+        # Validating pointsTransaction object in body
         Gameball::Utils.validate(body[:pointsTransaction], ['transactionId'],['rewardAmount','holdReference'])
         body[:pointsTransaction][:transactionTime]=Time.now.utc
         amount=''
@@ -14,17 +12,16 @@ module Gameball
           amount=body[:pointsTransaction][:rewardAmount]
         end
         body[:pointsTransaction]['hash']=Gameball::Utils.hashBody(playerUniqueId:body[:playerUniqueId],transactionTime:body[:pointsTransaction][:transactionTime],amount:amount)
+        body[:pointsTransaction][:transactionTime]=Time.now.utc.iso8601
       end
-      body[:pointsTransaction][:transactionTime]=Time.now.utc.iso8601
 
-      p body.to_json
->>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
       res = Gameball::Utils::request("post", "/Integrations/Action", body)
+      # Check for HTTP Success and throws error if not success
       unless res.kind_of? Net::HTTPSuccess
         if res.kind_of? Net::HTTPInternalServerError
           raise Gameball::GameballError.new("An Internal Server Error has occurred")
         else
-          raise Gameball::GameballError.new(res.body) # use custom message
+          raise Gameball::GameballError.new(res.body) 
         end
       else
         return res

@@ -323,6 +323,7 @@ end
         expect(res.code).to eq("200")
       end
       it "Sends an action with only event and reward" do
+        transactionId = rand 50000..10000000
         res= Gameball::Action.send_action({
           playerUniqueId: "player123",
           events:{
@@ -334,7 +335,7 @@ end
       },
           pointsTransaction:{
             rewardAmount:2,
-            transactionId:12
+            transactionId:transactionId
       }
       }
      )  

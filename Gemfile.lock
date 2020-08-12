@@ -1,13 +1,15 @@
 PATH
   remote: .
   specs:
-    alphaSDK (0.0.1)
+    alphaSDK (0.2.5)
+      rake (>= 12.0)
+      rspec (>= 3.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.4.4)
-    rake (12.3.3)
+    rake (12.0.0)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -27,8 +29,8 @@ PLATFORMS
 
 DEPENDENCIES
   alphaSDK!
-  rake (~> 12.0)
-  rspec (~> 3.0)
+  rake (>= 12.0)
+  rspec (>= 3.0)
 
 BUNDLED WITH
    2.1.4
