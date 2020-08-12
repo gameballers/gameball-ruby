@@ -1,3 +1,4 @@
+# This file is not to be executed, this is for offering examples for the usage of the SDK
 require "gameball"
 Gameball.api_key = "7c7636658209418c9a82306a421f76a5"
 Gameball.api_version = "v2.0"

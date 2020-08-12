@@ -7,7 +7,7 @@ module Gameball
                hash: hashedBody }
       res = Gameball::Utils::request("post", "/integrations/transaction/balance", body)
       unless res.kind_of? Net::HTTPSuccess
-        raise Gameball::GameballError.new(res.body) # use custom message
+        raise Gameball::GameballError.new(res.body) 
       else
         return res
       end
@@ -24,7 +24,7 @@ module Gameball
         if res.kind_of? Net::HTTPInternalServerError
           raise Gameball::GameballError.new("An Internal Server Error has occurred")
         else
-          raise Gameball::GameballError.new(res.body) # use custom message
+          raise Gameball::GameballError.new(res.body) 
         end
       else
         return res
@@ -40,7 +40,7 @@ module Gameball
         if res.kind_of? Net::HTTPInternalServerError
           raise Gameball::GameballError.new("An Internal Server Error has occurred")
         else
-          raise Gameball::GameballError.new(res.body) # use custom message
+          raise Gameball::GameballError.new(res.body) 
         end
       else
         return res
@@ -56,7 +56,7 @@ module Gameball
         if res.kind_of? Net::HTTPInternalServerError
           raise Gameball::GameballError.new("An Internal Server Error has occurred")
         else
-          raise Gameball::GameballError.new(res.body) # use custom message
+          raise Gameball::GameballError.new(res.body) 
         end
       else
         return res
@@ -72,7 +72,7 @@ module Gameball
         if res.kind_of? Net::HTTPInternalServerError
           raise Gameball::GameballError.new("An Internal Server Error has occurred")
         else
-          raise Gameball::GameballError.new(res.body) # use custom message
+          raise Gameball::GameballError.new(res.body) 
         end
       else
         return true
@@ -89,7 +89,7 @@ module Gameball
         if res.kind_of? Net::HTTPInternalServerError
           raise Gameball::GameballError.new("An Internal Server Error has occurred")
         else
-          raise Gameball::GameballError.new(res.body) # use custom message
+          raise Gameball::GameballError.new(res.body) 
         end
       else
         return res

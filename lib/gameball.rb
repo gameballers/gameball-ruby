@@ -1,3 +1,4 @@
+# Requiring all dependencies needed
 require "net/http"
 require "net/http"
 require "openssl"
@@ -5,6 +6,7 @@ require "uri"
 require "Time"
 require "digest/sha1"
 require "json"
+# Requiring all the other files to help us require this fiel only
 require_relative "./gameball/utils/request"
 require_relative "./gameball/utils/helper"
 require_relative "./gameball/utils/validation"

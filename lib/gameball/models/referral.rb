@@ -10,7 +10,7 @@ module Gameball
         if res.kind_of? Net::HTTPInternalServerError
           raise Gameball::GameballError.new("An Internal Server Error has occurred")
         else
-          raise Gameball::GameballError.new(res.body) # use custom message
+          raise Gameball::GameballError.new(res.body) 
         end
       else
         return true
