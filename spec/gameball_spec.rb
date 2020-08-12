@@ -1,7 +1,7 @@
-require "rspec/autorun"
+require "rspec"
 require "./lib/gameball"
 
-describe Gameball::Player do
+RSpec.describe Gameball::Player do
   before (:each) {
     Gameball::api_key = nil
     Gameball::api_version = nil
@@ -68,7 +68,7 @@ describe Gameball::Player do
     end
   end
 end
-describe Gameball::Event do
+RSpec.describe Gameball::Event do
   it "create new event" do
     Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
     Gameball::api_version = "v2.0"
@@ -149,6 +149,7 @@ describe Gameball::Event do
     })
     expect(res).to eq(true)
   end
+end
   # it "create new event with optional parameters" do
   #     Gameball::api_key="7c7636658209418c9a82306a421f76a5"
   #     Gameball::api_version="v2.0"
@@ -159,7 +160,7 @@ describe Gameball::Event do
   #     })
   #     expect(res).to eq(true)
   # end
-  describe Gameball::Referral do
+  RSpec.describe Gameball::Referral do
     it "Creates new player then new referral" do
       Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
       Gameball::api_version = "v2.0"
@@ -196,7 +197,7 @@ describe Gameball::Event do
       expect(res).to eq(true)
     end
   end
-  describe Gameball::Transaction do
+  RSpec.describe Gameball::Transaction do
     it "Makes a simple reward" do
       Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
       Gameball::transaction_key = "26e1967d89114388bdd1772587c336c8"
@@ -309,7 +310,7 @@ describe Gameball::Event do
       expect(res.code).to eq("200")
     end
   end
-  describe Gameball::Action do
+  RSpec.describe Gameball::Action do
       it "Sends an action with only an event" do
         res= Gameball::Action.send_action({ 
           playerUniqueId: "uniquekeys120",
@@ -321,6 +322,24 @@ describe Gameball::Event do
             }) 
         expect(res.code).to eq("200")
       end
+      it "Sends an action with only event and reward" do
+        res= Gameball::Action.send_action({
+          playerUniqueId: "player123",
+          events:{
+            review:{},
+            reserve:{
+              rooms:2
+            }
+        
+      },
+          pointsTransaction:{
+            rewardAmount:2,
+            transactionId:12
+      }
+      }
+     )  
+        expect(res.code).to eq("200")
+      end
       end
   
-end
+
