@@ -31,7 +31,11 @@ module Gameball
       rescue NoMethodError => exception
         raise Gameball::GameballError.new("Invalid Date Formate, Please use Date and Time objects")
       end
+<<<<<<< HEAD
       body["bodyHashed"] = Gameball::Utils::hashBody(playerUniqueId: playerUniqueId, amount: (amount || ""), transactionTime: (transactionTime || ""))
+=======
+      body["hash"] = Gameball::Utils::hashBody(playerUniqueId: playerUniqueId, amount: (amount || ""), transactionTime: (transactionTime || ""))
+>>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
       body
     end
   end

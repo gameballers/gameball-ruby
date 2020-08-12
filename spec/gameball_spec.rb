@@ -1,7 +1,7 @@
-require "rspec/autorun"
+require "rspec"
 require "./lib/gameball"
 
-describe Gameball::Player do
+RSpec.describe Gameball::Player do
   before (:each) {
     Gameball::api_key = nil
     Gameball::api_version = nil
@@ -68,7 +68,7 @@ describe Gameball::Player do
     end
   end
 end
-describe Gameball::Event do
+RSpec.describe Gameball::Event do
   it "create new event" do
     Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
     Gameball::api_version = "v2.0"
@@ -149,6 +149,7 @@ describe Gameball::Event do
     })
     expect(res).to eq(true)
   end
+end
   # it "create new event with optional parameters" do
   #     Gameball::api_key="7c7636658209418c9a82306a421f76a5"
   #     Gameball::api_version="v2.0"
@@ -159,7 +160,7 @@ describe Gameball::Event do
   #     })
   #     expect(res).to eq(true)
   # end
-  describe Gameball::Referral do
+  RSpec.describe Gameball::Referral do
     it "Creates new player then new referral" do
       Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
       Gameball::api_version = "v2.0"
@@ -196,26 +197,17 @@ describe Gameball::Event do
       expect(res).to eq(true)
     end
   end
-  describe Gameball::Transaction do
+  RSpec.describe Gameball::Transaction do
     it "Makes a simple reward" do
       Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
       Gameball::transaction_key = "26e1967d89114388bdd1772587c336c8"
       Gameball::api_version = "v2.0"
-<<<<<<< HEAD
-      transactionOnClientSystemId = rand 50000..10000000
-      res = Gameball::Transaction.reward_points({
-        playerUniqueId: "player123",
-        amount: 100,
-        transactionTime: Time.now.utc,
-        transactionOnClientSystemId: transactionOnClientSystemId,
-=======
       transactionId = rand 50000..10000000
       res = Gameball::Transaction.reward_points({
         playerUniqueId: "player123",
         amount: 100,
         
         transactionId: transactionId,
->>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
 
       })
       expect(res).to eq(true)
@@ -224,21 +216,12 @@ describe Gameball::Event do
       Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
       Gameball::transaction_key = "26e1967d89114388bdd1772587c336c8"
       Gameball::api_version = "v2.0"
-<<<<<<< HEAD
-      transactionOnClientSystemId = rand 50000..10000000
-      res = Gameball::Transaction.reward_points({
-        playerUniqueId: "player123",
-        amount: 100,
-        transactionTime: Time.now.utc,
-        transactionOnClientSystemId: transactionOnClientSystemId,
-=======
       transactionId = rand 50000..10000000
       res = Gameball::Transaction.reward_points({
         playerUniqueId: "player123",
         amount: 100,
         
         transactionId: transactionId,
->>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
         playerAttributes: {
           displayName: " Jon Snow",
           email: "jon.snow@example.com",
@@ -260,12 +243,7 @@ describe Gameball::Event do
       Gameball::api_version = "v2.0"
       res = Gameball::Transaction.hold_points({
         playerUniqueId: "player123",
-<<<<<<< HEAD
-        amount: 2,
-        transactionTime: Time.now.utc,
-=======
         amount: 2
->>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
       })
       expect(res.code).to eq("200")
     end
@@ -275,20 +253,6 @@ describe Gameball::Event do
       Gameball::api_version = "v2.0"
       res = Gameball::Transaction.hold_points({
         playerUniqueId: "player123",
-<<<<<<< HEAD
-        amount: 2,
-        transactionTime: Time.now.utc,
-      })
-
-      holdReference = JSON.parse(res.body)["holdReference"]
-      transactionOnClientSystemId = rand 50000..10000000
-      res = Gameball::Transaction.redeem_points({
-        holdReference: holdReference,
-        playerUniqueId: "player123",
-        amount: 2,
-        transactionOnClientSystemId: transactionOnClientSystemId,
-        transactionTime: Time.now.utc,
-=======
         amount: 2
       })
 
@@ -298,7 +262,6 @@ describe Gameball::Event do
         holdReference: holdReference,
         playerUniqueId: "player123",
         transactionId: transactionId
->>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
       })
       expect(res.code).to eq("200")
     end
@@ -308,39 +271,20 @@ describe Gameball::Event do
       Gameball::api_version = "v2.0"
       res = Gameball::Transaction.hold_points({
         playerUniqueId: "player123",
-<<<<<<< HEAD
-        amount: 2,
-        transactionTime: Time.now.utc,
-      })
-      transactionOnClientSystemId = rand 50000..10000000
-=======
         amount: 2
       })
       transactionId = rand 50000..10000000
->>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
 
       holdReference = JSON.parse(res.body)["holdReference"]
       res = Gameball::Transaction.redeem_points({
         holdReference: holdReference,
         playerUniqueId: "player123",
-<<<<<<< HEAD
-        amount: 2,
-        transactionOnClientSystemId: transactionOnClientSystemId,
-        transactionTime: Time.now.utc,
-      })
-      res = Gameball::Transaction.reverse_transaction({
-        playerUniqueId: "player123",
-        transactionOnClientSystemId: transactionOnClientSystemId,
-        reversedTransactionOnClientSystemId: transactionOnClientSystemId,
-        transactionTime: Time.now.utc,
-=======
         transactionId: transactionId
       })
       res = Gameball::Transaction.reverse_transaction({
         playerUniqueId: "player123",
         transactionId: transactionId,
         reversedTransactionId: transactionId
->>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
       })
       expect(res.code).to eq("200")
     end
@@ -350,24 +294,12 @@ describe Gameball::Event do
       Gameball::api_version = "v2.0"
       res = Gameball::Transaction.hold_points({
         playerUniqueId: "player123",
-<<<<<<< HEAD
-        amount: 2,
-        transactionTime: Time.now.utc,
-      })
-=======
         amount: 2      })
->>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
 
       holdReference = JSON.parse(res.body)["holdReference"]
       res = Gameball::Transaction.reverse_hold({
         playerUniqueId: "player123",
-<<<<<<< HEAD
-        holdReference: holdReference,
-        transactionTime: Time.now.utc,
-      })
-=======
         holdReference: holdReference      })
->>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
       expect(res.code).to eq("200")
     end
     it "Gets a Player's balance" do
@@ -378,9 +310,7 @@ describe Gameball::Event do
       expect(res.code).to eq("200")
     end
   end
-<<<<<<< HEAD
-=======
-  describe Gameball::Action do
+  RSpec.describe Gameball::Action do
       it "Sends an action with only an event" do
         res= Gameball::Action.send_action({ 
           playerUniqueId: "uniquekeys120",
@@ -392,7 +322,24 @@ describe Gameball::Event do
             }) 
         expect(res.code).to eq("200")
       end
+      it "Sends an action with only event and reward" do
+        res= Gameball::Action.send_action({
+          playerUniqueId: "player123",
+          events:{
+            review:{},
+            reserve:{
+              rooms:2
+            }
+        
+      },
+          pointsTransaction:{
+            rewardAmount:2,
+            transactionId:12
+      }
+      }
+     )  
+        expect(res.code).to eq("200")
+      end
       end
   
->>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
-end
+

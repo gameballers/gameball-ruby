@@ -3,9 +3,26 @@ Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
 Gameball::api_version = "v2.0"
 Gameball::transaction_key = "26e1967d89114388bdd1772587c336c8"
 # res=Gameball::Transaction.get_player_balance("uniqueKey00")
+<<<<<<< HEAD
 res = Gameball::Player.initialize_player({ playerUniqueId: "uniquekeys120", playerAttributes: { displayName: "Souidan", firstName: "Souidan1", lastName: "Souidan2", email: "alisouidan@gmail.com",
                                                                                               gender: "Male", mobileNumber: "+201002580909",
                                                                                               dateOfBirth: Date.parse("10/10/2010"), joinDate: Time.now.utc } })
+=======
+# res = Gameball::Player.initialize_player({ playerUniqueId: "uniquekeys120", playerAttributes: { displayName: "Souidan", firstName: "Souidan1", lastName: "Souidan2", email: "alisouidan@gmail.com",
+#                                                                                               gender: "Male", mobileNumber: "+201002580909",
+#                                                                                               dateOfBirth: Date.parse("10/10/2010"), joinDate: Time.now.utc } })
+res= Gameball::Action.send_action({ playerUniqueId: "player123",events:{
+review:{},
+reserve:{rooms:2}
+        
+      },
+      pointsTransaction:{
+            rewardAmount:2,
+            transactionId:12
+      }
+      }
+     )                                                                                            
+>>>>>>> aece124df52cb5113b88b74b8e8eb5c68bec89ef
 # res=Gameball::Transaction.hold_points({
 #   playerUniqueId:"uniqueKey00",
 #   amount:2,
@@ -15,13 +32,13 @@ res = Gameball::Player.initialize_player({ playerUniqueId: "uniquekeys120", play
 #     holdReference:"c61153e4-fc79-4b1c-adce-f789bc061fe9",
 #     playerUniqueId:"uniqueKey00",
 #     amount:2,
-#     transactionOnClientSystemId:12,
+#     transactionId:12,
 #     transactionTime:Time.now.utc
 # })
 # res=Gameball::Transaction.reverse_transaction({
 #     playerUniqueId:"uniqueKey00",
-#     transactionOnClientSystemId:12,
-#     reversedTransactionOnClientSystemId:12,
+#     transactionId:12,
+#     reversedTransactionId:12,
 #     transactionTime:Time.now.utc
 # })
 # res=Gameball::Transaction.reverse_hold({
@@ -40,7 +57,7 @@ res = Gameball::Player.initialize_player({ playerUniqueId: "uniquekeys120", play
 #  playerUniqueId:"uniqueKey00",
 #   amount:100,
 #   transactionTime:Time.now.utc,
-#   transactionOnClientSystemId:"1232344",
+#   transactionId:"1232344",
 
 # })
 #   res=Gameball::Event.sendEvent({

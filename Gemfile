@@ -1,5 +1,7 @@
-source 'https://rubygems.org'
-# We will be putting our gems here  
-# gem 'async-http'
-gem 'rspec'
-#  This file is equivalent to package.json or vendor files
+source "https://rubygems.org"
+
+# Specify your gem's dependencies in gameball.gemspec
+gemspec
+
+gem "rake", "~> 12.0"
+gem "rspec", "~> 3.0"
