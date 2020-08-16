@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Alsouidan"]
   spec.email         = ["alsouidan@gmail.com"]
 
-  spec.summary       = "Ruby gem"
-  spec.homepage      = "http://mygemserver.com"
+  spec.summary       = "Ruby SDK for Gameball's API"
+  spec.homepage      = "https://www.gameball.co/"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
   spec.add_dependency 'rake','>= 12.0'

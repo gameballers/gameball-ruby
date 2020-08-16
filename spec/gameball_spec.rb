@@ -11,15 +11,15 @@ RSpec.describe Gameball::Player do
     Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
     Gameball::api_version = "v2.0"
     playerUniqueId = rand 50000..10000000
-    res = Gameball::Player.initialize_player({ playerUniqueId: playerUniqueId, playerAttributes: { displayName: "Souidan", firstName: "Souidan1", lastName: "Souidan2", email: "alisouidan@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } })
+    res = Gameball::Player.initialize_player({ playerUniqueId: playerUniqueId, playerAttributes: { displayName: "player", firstName: "player1", lastName: "player2", email: "aliplayer@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } })
     expect(res.code).to eq("200")
   end
   it "Initializes a new Gameball player 2" do
     Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
     Gameball::api_version = "v2.0"
     playerUniqueId = rand 50000..10000000
-    res = Gameball::Player.initialize_player({ playerUniqueId: playerUniqueId, playerAttributes: { displayName: "Souidan", firstName: "Souidan1", lastName: "Souidan2",
-                                                                                                 email: "alisouidan@gmail.com", gender: "Male", mobileNumber: "+201002580909",
+    res = Gameball::Player.initialize_player({ playerUniqueId: playerUniqueId, playerAttributes: { displayName: "player", firstName: "player1", lastName: "player2",
+                                                                                                 email: "aliplayer@gmail.com", gender: "Male", mobileNumber: "+201002580909",
                                                                                                  dateOfBirth: Time.now.utc, joinDate: Time.now.utc,
                                                                                                  custom: {
       location: "Miami",
@@ -38,7 +38,7 @@ RSpec.describe Gameball::Player do
   context "When user doesn't include api_key" do
     it "Throws GameballError" do
       playerUniqueId = rand 50000..10000000
-      body = { playerUniqueId: playerUniqueId, playerAttributes: { displayName: "Souidan", firstName: "Souidan1", lastName: "Souidan2", email: "alisouidan@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } }
+      body = { playerUniqueId: playerUniqueId, playerAttributes: { displayName: "player", firstName: "player1", lastName: "player2", email: "aliplayer@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } }
       expect { Gameball::Player.initialize_player(body) }.to raise_error(Gameball::GameballError)
     end
   end
@@ -47,7 +47,7 @@ RSpec.describe Gameball::Player do
       Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
       Gameball::api_version = "v2.0"
       playerUniqueId = rand 50000..10000000
-      body = { playerAttributes: { displayName: "Souidan", firstName: "Souidan1", lastName: "Souidan2", email: "alisouidan@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } }
+      body = { playerAttributes: { displayName: "player", firstName: "player1", lastName: "player2", email: "aliplayer@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } }
       expect { Gameball::Player.initialize_player(body) }.to raise_error(Gameball::GameballError)
     end
     it "Throws GameballError when sending empty body" do
@@ -63,7 +63,7 @@ RSpec.describe Gameball::Player do
       Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
       Gameball::api_version = "v2.0"
       playerUniqueId = rand 50000..10000000
-      body = { playerUniqueId: playerUniqueId, playerAttributes: { displayName: "Souidan", firstName: "Souidan1", lastName: "Souidan2", email: "alisouidan@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: "0123", joinDate: Time.now.utc } }
+      body = { playerUniqueId: playerUniqueId, playerAttributes: { displayName: "player", firstName: "player1", lastName: "player2", email: "aliplayer@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: "0123", joinDate: Time.now.utc } }
       expect { Gameball::Player.initialize_player(body) }.to raise_error(Gameball::GameballError)
     end
   end
@@ -156,7 +156,7 @@ end
   #     res=Gameball::Event.sendEvent({
   #     events:{view_product_page:{customer_id:"123",product_id:"123",product_title:"title",product_vendor:"vendor",shop_name:"shop"}},
   #     playerUniqueId:"uinqueKeys123",
-  #     playerAttributes:{displayName:"Souidan",firstName:"Souidan1",lastName:"Souidan2",email:"alisouidan@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:"0123",joinDate:Time.now.utc}
+  #     playerAttributes:{displayName:"player",firstName:"player1",lastName:"player2",email:"aliplayer@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:"0123",joinDate:Time.now.utc}
   #     })
   #     expect(res).to eq(true)
   # end
@@ -165,7 +165,7 @@ end
       Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
       Gameball::api_version = "v2.0"
       playerUniqueId = rand 50000..10000000
-      res = Gameball::Player.initialize_player({ playerUniqueId: playerUniqueId, playerAttributes: { displayName: "Souidan", firstName: "Souidan1", lastName: "Souidan2", email: "alisouidan@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } })
+      res = Gameball::Player.initialize_player({ playerUniqueId: playerUniqueId, playerAttributes: { displayName: "player", firstName: "player1", lastName: "player2", email: "aliplayer@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } })
       playerCode = JSON.parse(res.body)["referralCode"]
       res = Gameball::Referral.create_referral({
         playerCode: playerCode,
@@ -177,7 +177,7 @@ end
       Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
       Gameball::api_version = "v2.0"
       playerUniqueId = rand 50000..10000000
-      res = Gameball::Player.initialize_player({ playerUniqueId: playerUniqueId, playerAttributes: { displayName: "Souidan", firstName: "Souidan1", lastName: "Souidan2", email: "alisouidan@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } })
+      res = Gameball::Player.initialize_player({ playerUniqueId: playerUniqueId, playerAttributes: { displayName: "player", firstName: "player1", lastName: "player2", email: "aliplayer@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } })
       playerCode = JSON.parse(res.body)["referralCode"]
       res = Gameball::Referral.create_referral({
         playerCode: playerCode,
