@@ -138,3 +138,47 @@ Gameball::Transaction.reverse_hold({
   holdReference: "9245fe4a-d402-451c-b9ed-9c1a04247482",
   transactionTime: "2019-09-21T16:53:28.190Z",
 })
+
+# Action
+# Example 1
+Gameball::Action.send_action({
+	playerUniqueId: "your_player_unique_id",
+	events: {
+		review: {},
+		reserve: {
+			rooms: 2
+		}
+	}
+})
+# Example 2
+Gameball::Action.send_action({
+	playerUniqueId: "your_player_unique_id",
+	events: {
+		review: {},
+		reserve: {
+			rooms: 2
+		}
+	},
+	pointsTransaction: {
+		rewardAmount: 2,
+		transactionId: "234567890",
+		transactionTime: "2020-08-12T14:05:24Z",
+		hash: "723cfd0f91bf7759c80818c26bf080820a821111"
+	}
+})
+# Example 3
+Gameball::Action.send_action({
+	playerUniqueId: "your_player_unique_id",
+	events: {
+		review: {},
+		reserve: {
+			rooms: 2
+		}
+	},
+	pointsTransaction: {
+		rewardAmount: 2,
+		holdReference: "2342452352435234",
+		transactionId: "234567890",
+		transactionTime: "2020-08-12T14:05:24Z",
+		hash: "723cfd0f91bf7759c80818c26bf080820a821111"
+	}

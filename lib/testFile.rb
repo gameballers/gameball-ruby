@@ -3,7 +3,7 @@ Gameball::api_key = "7c7636658209418c9a82306a421f76a5"
 Gameball::api_version = "v2.0"
 Gameball::transaction_key = "26e1967d89114388bdd1772587c336c8"
 # res=Gameball::Transaction.get_player_balance("uniqueKey00")
-# res = Gameball::Player.initialize_player({ playerUniqueId: "uniquekeys120", playerAttributes: { displayName: "Souidan", firstName: "Souidan1", lastName: "Souidan2", email: "alisouidan@gmail.com",
+# res = Gameball::Player.initialize_player({ playerUniqueId: "uniquekeys120", playerAttributes: { displayName: "player", firstName: "player1", lastName: "player2", email: "aliplayer@gmail.com",
 #                                                                                               gender: "Male", mobileNumber: "+201002580909",
 #                                                                                               dateOfBirth: Date.parse("10/10/2010"), joinDate: Time.now.utc } })
 res= Gameball::Action.send_action({ playerUniqueId: "player123",events:{
@@ -79,7 +79,7 @@ reserve:{rooms:2}
 # res=Gameball::Event.sendEvent({
 #         events:{view_product_page:{customer_id:"123",product_id:"123",product_title:"title",product_vendor:"vendor",shop_name:"shop"}},
 #         playerUniqueId:"uniquekeys120",
-#         playerAttributes:{displayName:"Souidan",firstName:"Souidan1",lastName:"Souidan2",email:"alisouidan1@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:"0123",joinDate:Time.now.utc}
+#         playerAttributes:{displayName:"player",firstName:"player1",lastName:"player2",email:"aliplayer1@gmail.com",gender:"Male",mobileNumber:"+201002580909",dateOfBirth:"0123",joinDate:Time.now.utc}
 #         })
 p res.body
 # p res

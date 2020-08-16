@@ -1,9 +1,10 @@
 # Gameball Ruby SDK
+
 The Gameball Ruby SDK provides convenient access to the Gameball API from applications written in the Ruby language.
 
 ## Documentation
 
-Please refer to the  [Gameball API docs](https://docs.gameball.co).
+Please refer to the [Gameball API docs](https://docs.gameball.co).
 
 ## Installation
 
@@ -16,7 +17,7 @@ gem install gameballSDK
 
 ### Requirements
 
--   Ruby 2.6+  and Gem 3.0+
+- Ruby 2.6+ and Gem 3.0+
 
 ## Usage
 
@@ -25,9 +26,9 @@ The SDK needs to be configured with your account's API & Transaction keys availa
 ```ruby
 require 'gameball'
 
-Gameball.api_key="api_key" 
+Gameball.api_key="api_key"
 Gameball.api_version="v2.0" # Or latest
-Gameball.transaction_key="transaction_key" 
+Gameball.transaction_key="transaction_key"
 ```
 
 ### Example
@@ -35,7 +36,7 @@ Gameball.transaction_key="transaction_key"
 #### Sending an Event
 
 ```ruby
-# Example 1 
+# Example 1
 Gameball::Event.send_event({
 	events:{
 		place_order:{
@@ -87,7 +88,9 @@ Gameball::Event.send_event({
 
 
 ```
+
 #### Create a new Referral
+
 ```ruby
 Gameball::Referral.create_referral({
 	playerCode:"CODE11",
@@ -117,6 +120,7 @@ Gameball::Referral.create_referral({
 ```
 
 #### Reward Examples
+
 ```ruby
 # Example 1
 Gameball::Transaction.reward_points({
@@ -148,11 +152,15 @@ Gameball::Transaction.reward_points({
 }
 )
 ```
+
 #### Get Player Balance Example
+
 ```ruby
 Gameball::Transaction.get_player_balance("player456")
 ```
+
 #### Hold Points Example
+
 ```ruby
 Gameball::Transaction.hold_points({
 	playerUniqueId:"player456",
@@ -161,8 +169,10 @@ Gameball::Transaction.hold_points({
 }
 )
 ```
+
 #### Redeem Example
-```ruby 
+
+```ruby
 Gameball::Transaction.redeem_points({
 	playerUniqueId:"player456",
 	amount:10,
@@ -171,7 +181,9 @@ Gameball::Transaction.redeem_points({
 	transactionTime:"2019-09-19T16:14:09.895Z"
 	})
 ```
+
 #### Reverse Transaction Example
+
 ```ruby
 Gameball::Transaction.reverse_transaction({
 	playerUniqueId:"player456",
@@ -181,22 +193,73 @@ Gameball::Transaction.reverse_transaction({
 }
 )
 ```
-#### Reverse Hold Example 
+
+#### Reverse Hold Example
+
 ```ruby
 Gameball::Transaction.reverse_hold({
 	playerUniqueId:" player456",
 	holdReference:"9245fe4a-d402-451c-b9ed-9c1a04247482",
 	transactionTime:"2019-09-21T16:53:28.190Z"
-} 
+}
 )
+```
+
+### Actions
+
+```ruby
+# Example 1
+Gameball::Action.send_action({
+	playerUniqueId: "your_player_unique_id",
+	events: {
+		review: {},
+		reserve: {
+			rooms: 2
+		}
+	}
+})
+# Example 2
+Gameball::Action.send_action({
+	playerUniqueId: "your_player_unique_id",
+	events: {
+		review: {},
+		reserve: {
+			rooms: 2
+		}
+	},
+	pointsTransaction: {
+		rewardAmount: 2,
+		transactionId: "234567890",
+		transactionTime: "2020-08-12T14:05:24Z",
+		hash: "723cfd0f91bf7759c80818c26bf080820a821111"
+	}
+})
+# Example 3
+Gameball::Action.send_action({
+	playerUniqueId: "your_player_unique_id",
+	events: {
+		review: {},
+		reserve: {
+			rooms: 2
+		}
+	},
+	pointsTransaction: {
+		rewardAmount: 2,
+		holdReference: "2342452352435234",
+		transactionId: "234567890",
+		transactionTime: "2020-08-12T14:05:24Z",
+		hash: "723cfd0f91bf7759c80818c26bf080820a821111"
+	}
 ```
 
 ### Handling exceptions
 
-Unsuccessful requests raise exceptions. The raised exception will reflect the sort of error that occurred with appropriate message and error code . Please refer to the  [Gameball API docs](https://docs.gameball.co).
+Unsuccessful requests raise exceptions. The raised exception will reflect the sort of error that occurred with appropriate message and error code . Please refer to the [Gameball API docs](https://docs.gameball.co).
 
 ## Contribution
+
 The master branch of this repository contains the latest stable release of the SDK.
 
 ## Contact
+
 For usage questions\suggestions drop us an email at support[ at ]gameball.co. Please report any bugs as issues.
