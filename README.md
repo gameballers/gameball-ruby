@@ -126,8 +126,7 @@ Gameball::Referral.create_referral({
 Gameball::Transaction.reward_points({
 	playerUniqueId:"player123",
 	amount:99.98,
-	transactionId:"tra_123456789",
-	transactionTime:"2019-09-19T16:14:09.895Z"
+	transactionId:"tra_123456789"
 })
 # Example 2
 Gameball::Transaction.reward_points({
@@ -147,8 +146,7 @@ Gameball::Transaction.reward_points({
 			graduationDate:"2018-07-04T21:06:29.158Z",
 			isMarried:false
 		}
-	},
-	transactionTime:"2019-09-19T16:14:09.895Z"
+	}
 }
 )
 ```
@@ -164,8 +162,7 @@ Gameball::Transaction.get_player_balance("player456")
 ```ruby
 Gameball::Transaction.hold_points({
 	playerUniqueId:"player456",
-	amount:98.89,
-	transactionTime:"2019-09-21T16:53:28.190Z"
+	amount:98.89
 }
 )
 ```
@@ -178,7 +175,6 @@ Gameball::Transaction.redeem_points({
 	amount:10,
 	transactionId:"tra_123456789",
 	holdReference:"2342452352435234",
-	transactionTime:"2019-09-19T16:14:09.895Z"
 	})
 ```
 
@@ -188,8 +184,7 @@ Gameball::Transaction.redeem_points({
 Gameball::Transaction.reverse_transaction({
 	playerUniqueId:"player456",
 	transactionId:"1234567890",
-	reversedTransactionId:"234567891",
-	transactionTime:"2019-09-19T11:14:09.895Z"
+	reversedTransactionId:"234567891"
 }
 )
 ```
@@ -199,8 +194,7 @@ Gameball::Transaction.reverse_transaction({
 ```ruby
 Gameball::Transaction.reverse_hold({
 	playerUniqueId:" player456",
-	holdReference:"9245fe4a-d402-451c-b9ed-9c1a04247482",
-	transactionTime:"2019-09-21T16:53:28.190Z"
+	holdReference:"9245fe4a-d402-451c-b9ed-9c1a04247482"
 }
 )
 ```
@@ -229,9 +223,7 @@ Gameball::Action.send_action({
 	},
 	pointsTransaction: {
 		rewardAmount: 2,
-		transactionId: "234567890",
-		transactionTime: "2020-08-12T14:05:24Z",
-		hash: "723cfd0f91bf7759c80818c26bf080820a821111"
+		transactionId: "234567890"
 	}
 })
 # Example 3
@@ -246,9 +238,7 @@ Gameball::Action.send_action({
 	pointsTransaction: {
 		rewardAmount: 2,
 		holdReference: "2342452352435234",
-		transactionId: "234567890",
-		transactionTime: "2020-08-12T14:05:24Z",
-		hash: "723cfd0f91bf7759c80818c26bf080820a821111"
+		transactionId: "234567890"
 	}
 ```
 
