@@ -27,7 +27,6 @@ The SDK needs to be configured with your account's API & Transaction keys availa
 require 'gameball'
 
 Gameball.api_key="api_key"
-Gameball.api_version="v2.0" # Or latest
 Gameball.transaction_key="transaction_key"
 ```
 
@@ -244,7 +243,7 @@ Gameball::Action.send_action({
 
 ### Testing
 
-To test run in the terminal `bundle`
+To test run in the terminal `bundle exec rspec spec`
 
 ### Handling exceptions
 

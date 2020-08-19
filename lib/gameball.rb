@@ -6,7 +6,7 @@ require "uri"
 require "Time"
 require "digest/sha1"
 require "json"
-# Requiring all the other files to help us require this fiel only
+# Requiring all the other files to help us require this field only
 require_relative "./gameball/utils/request"
 require_relative "./gameball/utils/helper"
 require_relative "./gameball/utils/validation"
@@ -26,7 +26,7 @@ module Gameball
   @api_version = "v2.0"
   class << self
     attr_accessor :api_key
-    attr_accessor :api_version
+    attr_reader :api_version
     attr_accessor :transaction_key
     attr_accessor :read_timeout
     attr_accessor :max_retries
