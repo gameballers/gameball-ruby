@@ -17,7 +17,7 @@ gem install gameballSDK
 
 ### Requirements
 
-- Ruby 2.6+ and Gem 3.0+
+- Ruby 2.3+ and Gem 3.0+
 
 ## Usage
 
@@ -241,6 +241,10 @@ Gameball::Action.send_action({
 		transactionId: "234567890"
 	}
 ```
+
+### Testing
+
+To test run in the terminal `bundle`
 
 ### Handling exceptions
 

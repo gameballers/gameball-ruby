@@ -2,7 +2,7 @@ require_relative 'lib/gameball/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "alphaSDK"
-  spec.version       = Gameball::VERSION
+  spec.version       = Gameball::VERSION  
   spec.authors       = ["Alsouidan"]
   spec.email         = ["alsouidan@gmail.com"]
 
