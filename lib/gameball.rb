@@ -20,7 +20,7 @@ require_relative "./gameball/exceptions/gameballException"
 require_relative "./gameball/lang"
 
 module Gameball
-  @api_base = "https://api.gameball.co"
+  @api_base = "https://gb-api.azurewebsites.net"
   @max_retries = 1
   @read_timeout = 60
   @keep_alive_timeout = 30
