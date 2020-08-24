@@ -138,39 +138,39 @@ RSpec.describe Gameball::Player do
 				expect(res).to eq(true)
 			end
 		end
-		RSpec.describe Gameball::Referral do
-			it "Creates new player then new referral" do
-		 		playerUniqueId = rand 50000..10000000
-				res = Gameball::Player.initialize_player({ playerUniqueId: playerUniqueId, playerAttributes: { displayName: "player", firstName: "player1", lastName: "player2", email: "aliplayer@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } })
-				playerCode = JSON.parse(res.body)["referralCode"]
-				res = Gameball::Referral.create_referral({
-					playerCode: playerCode,
-					playerUniqueId: playerUniqueId,
-				})
-				expect(res).to eq(true)
-			end
-			it "Creates new player then new referral with player attributes" do
-		 		playerUniqueId = rand 50000..10000000
-				res = Gameball::Player.initialize_player({ playerUniqueId: playerUniqueId, playerAttributes: { displayName: "player", firstName: "player1", lastName: "player2", email: "aliplayer@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } })
-				playerCode = JSON.parse(res.body)["referralCode"]
-				res = Gameball::Referral.create_referral({
-					playerCode: playerCode,
-					playerUniqueId: playerUniqueId,
-					playerAttributes: {
-						displayName: " Jon Snow",
-						email: "jon.snow@example.com",
-						dateOfBirth: "1980-09-19T00:00:00.000Z",
-						joinDate: "2019-09-19T21:06:29.158Z",
-						custom: {
-							location: "Miami",
-							graduationDate: "2018-07-04T21:06:29.158Z",
-							isMarried: false,
-						},
-					},
-				})
-				expect(res).to eq(true)
-			end
-		end
+		# RSpec.describe Gameball::Referral do
+		# 	it "Creates new player then new referral" do
+		#  		playerUniqueId = rand 50000..10000000
+		# 		res = Gameball::Player.initialize_player({ playerUniqueId: playerUniqueId, playerAttributes: { displayName: "player", firstName: "player1", lastName: "player2", email: "aliplayer@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } })
+		# 		playerCode = JSON.parse(res.body)["referralCode"]
+		# 		res = Gameball::Referral.create_referral({
+		# 			playerCode: playerCode,
+		# 			playerUniqueId: playerUniqueId,
+		# 		})
+		# 		expect(res).to eq(true)
+		# 	end
+		# 	it "Creates new player then new referral with player attributes" do
+		#  		playerUniqueId = rand 50000..10000000
+		# 		res = Gameball::Player.initialize_player({ playerUniqueId: playerUniqueId, playerAttributes: { displayName: "player", firstName: "player1", lastName: "player2", email: "aliplayer@gmail.com", gender: "Male", mobileNumber: "+201002580909", dateOfBirth: Time.now.utc, joinDate: Time.now.utc } })
+		# 		playerCode = JSON.parse(res.body)["referralCode"]
+		# 		res = Gameball::Referral.create_referral({
+		# 			playerCode: playerCode,
+		# 			playerUniqueId: playerUniqueId,
+		# 			playerAttributes: {
+		# 				displayName: " Jon Snow",
+		# 				email: "jon.snow@example.com",
+		# 				dateOfBirth: "1980-09-19T00:00:00.000Z",
+		# 				joinDate: "2019-09-19T21:06:29.158Z",
+		# 				custom: {
+		# 					location: "Miami",
+		# 					graduationDate: "2018-07-04T21:06:29.158Z",
+		# 					isMarried: false,
+		# 				},
+		# 			},
+		# 		})
+		# 		expect(res).to eq(true)
+		# 	end
+		# end
 		RSpec.describe Gameball::Transaction do
 			it "Makes a simple reward" do
 		 				

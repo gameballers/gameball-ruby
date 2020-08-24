@@ -20,12 +20,13 @@ module Gameball
         end
       else
         return res
+      return res
       end
     end
-    def self.get_player_info(playerUniqueId)
+    def self.get_player_info(playerUniqueId,lang="")
       body = { playerUniqueId: playerUniqueId }
       body["hash"] = Gameball::Utils::hashBody(playerUniqueId: playerUniqueId)
-      res = Gameball::Utils::request("post", "/integrations/Player/Info", body)
+      res = Gameball::Utils::request("post", "/integrations/Player/Info", body,lang)
       # Check for HTTP Success and throws error if not success
       unless res.kind_of? Net::HTTPSuccess
         if res.kind_of? Net::HTTPInternalServerError
