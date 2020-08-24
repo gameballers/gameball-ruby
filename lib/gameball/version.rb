@@ -1,3 +1,3 @@
 module Gameball
-  VERSION = "1.0.0" # Version of the SDK
+  VERSION = "1.0.1" # Version of the SDK
 end

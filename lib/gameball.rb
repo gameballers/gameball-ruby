@@ -17,9 +17,10 @@ require_relative "./gameball/models/referral"
 require_relative "./gameball/models/coupon"
 require_relative "./gameball/models/action"
 require_relative "./gameball/exceptions/gameballException"
+require_relative "./gameball/lang"
 
 module Gameball
-  @api_base = "https://gb-api.azurewebsites.net"
+  @api_base = "https://api.gameball.co"
   @max_retries = 1
   @read_timeout = 60
   @keep_alive_timeout = 30

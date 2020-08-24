@@ -2,7 +2,7 @@ module Gameball
   module Utils
     extend self
 
-    def request(verb, path, body = {})
+    def request(verb, path, body = {},lang="")
       # check for api_version and key and throw error if not included
       if !Gameball.api_key
         raise Gameball::GameballError.new("Please provide the api_key before making a request, try Gameball::api_key='your_key'")
@@ -29,6 +29,9 @@ module Gameball
       end
       if body != {}
         req.body = body.to_json
+      end
+      if lang!=""
+        req["lang"]=lang
       end
       req["APIKey"] = Gameball.api_key
       res = https.request(req)
