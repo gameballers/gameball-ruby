@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   # spec.metadata["allowed_push_host"] = "https://github.com/Alsouidan/alphasdk"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "http://mygemserver.com"
+  spec.metadata["source_code_uri"] = "https://github.com/gameballers/gameball-ruby"
   spec.metadata["changelog_uri"] = "http://mygemserver.com"
 
   # Specify which files should be added to the gem when it is released.
