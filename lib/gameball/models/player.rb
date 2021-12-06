@@ -54,7 +54,7 @@ module Gameball
         return res
       end
     end
-    def self.get_player_balance(playerUniqueId)
+    def self.get_player_progress(playerUniqueId)
         res=Gameball::Utils::request("get","/integrations/player/#{playerUniqueId}/progress")
       # Check for HTTP Success and throws error if not success
       unless res.kind_of? Net::HTTPSuccess

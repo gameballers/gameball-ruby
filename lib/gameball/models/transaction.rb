@@ -130,7 +130,7 @@ module Gameball
         return res
       end
     end
-    def self.list_transaction(params={})
+    def self.list_transactions(params={})
       Gameball::Utils.validate(params, [], ["page","limit","direction","from","to","transactionId","status"])
       res = Gameball::Utils::request("get", "/integrations/transaction/list",params:params)
       unless res.kind_of? Net::HTTPSuccess

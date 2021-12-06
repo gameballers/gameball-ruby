@@ -1,6 +1,6 @@
 module Gameball
     class Order
-      def self.send_order(body)
+      def self.place_order(body)
         # Validating keys in incoming body
         Gameball::Utils.validate(body, ["playerUniqueId","orderId","totalPaid","totalPrice"], 
             ["mobile","email","totalShipping","totalTax","totalDiscount","lineItems","discountCodes","extra","redeemedAmount","holdReference","guest",
