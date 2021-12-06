@@ -22,7 +22,7 @@ require_relative "./gameball/models/configurations"
 require_relative "./gameball/exceptions/gameballException"
 
 module Gameball
-  @api_base = "https://api.gameball.co/"
+  @api_base = "https://api.dev.gameball.app/"
   @max_retries = 1
   @read_timeout = 60
   @keep_alive_timeout = 30
