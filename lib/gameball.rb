@@ -1,6 +1,5 @@
 # Requiring all dependencies needed
 require "net/http"
-require "net/http"
 require "openssl"
 require "uri"
 require "Time"
@@ -16,17 +15,21 @@ require_relative "./gameball/models/transaction"
 require_relative "./gameball/models/referral"
 require_relative "./gameball/models/coupon"
 require_relative "./gameball/models/action"
+require_relative "./gameball/models/order"
+require_relative "./gameball/models/leaderboard"
+require_relative "./gameball/models/notifications"
+require_relative "./gameball/models/configurations"
 require_relative "./gameball/exceptions/gameballException"
 
 module Gameball
-  @api_base = "https://gb-api.azurewebsites.net"
+  @api_base = "https://api.dev.gameball.app"
   @max_retries = 1
   @read_timeout = 60
   @keep_alive_timeout = 30
   @api_version = "v2.0"
   class << self
     attr_accessor :api_key
-    attr_reader :api_version
+    attr_accessor :api_version
     attr_accessor :transaction_key
     attr_accessor :read_timeout
     attr_accessor :max_retries
