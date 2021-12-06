@@ -188,7 +188,7 @@ Gameball::Transaction.refund({
    playerUniqueId:"player456",
    transactionId:"1234567890",
    reverseTransactionId:"234567891",
-   amount: null
+   amount: nil
 }
 )
 ```
@@ -247,7 +247,7 @@ Gameball::Order.place_order({
       productId:"875511",
       title: "XPS-15s",
       category: [
-        electronics
+        "electronics"
       ],
       vendor: "Dell"
     }
@@ -261,7 +261,7 @@ Gameball::Order.place_order({
     billingAddress: "Alabama"
   },
   redeemedAmount: 20,
-  holdReference: null,
+  holdReference: nil,
   guest: false
 })
 ```

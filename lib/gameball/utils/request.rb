@@ -12,7 +12,6 @@ module Gameball
       if params != {}
         uri.query=URI.encode_www_form(params)
       end
-      puts uri
       https = Net::HTTP.new(uri.host, uri.port)
       https.max_retries = Gameball.max_retries
       https.read_timeout = Gameball.read_timeout
