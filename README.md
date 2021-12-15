@@ -12,7 +12,7 @@ You don't need this source code unless you want to modify the SDK. If you just
 want to use the SDK, just run:
 
 ```sh
-gem install gameballSDK
+gem install gameball
 ```
 
 ### Requirements
