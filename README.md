@@ -28,9 +28,88 @@ require 'gameball'
 
 Gameball.api_key="api_key"
 Gameball.transaction_key="transaction_key"
+# If using API Version 3.0
+Gameball.api_version="v3.0
 ```
 
 ### Example
+
+#### Create Player
+
+```ruby
+# Example 1
+Gameball::Player.initialize_player({
+   playerUniqueId:"player123",
+   mobile: "+1234567",
+   email: "jon.snow@example.com",
+   "playerAttributes":{
+      displayName:"Jon Snow",
+      firstName: "Jon",
+      lastName: "Snow",
+      mobile: "+1234567",
+      email:"jon.snow@example.com",
+      gender:"M",
+      dateOfBirth:"1980-09-19T00:00:00.000Z",
+      joinDate:"2019-09-19T21:06:29.158Z",
+      tags: "VIP,Platinum",
+    	custom:{
+           location:"Miami",
+           graduationDate:"2018-07-04T21:06:29.158Z",
+           isMarried:false
+        }
+    }
+  })
+# Example 2
+Gameball::Player.initialize_player({
+   referrerCode:"CODE11",
+   playerUniqueId:"player456",
+   playerAttributes:{
+      displayName:" Tyrion Lannister",
+      firstName:"Tyrion",
+      lastName:"Lannister",
+      email:"tyrion@example.com",
+      gender:"M",
+      dateOfBirth:"1978-01-11T00:00:00.000Z",
+      joinDate:"2019-09-19T21:06:29.158Z",
+      custom:{
+         location:"Miami",
+         graduationDate:"2018-07-04T21:06:29.158Z",
+         isMarried:false
+  	}
+   })
+
+
+```
+
+#### Retrieve Player
+```ruby
+Gameball::Player.get_player_info("player123")
+
+```
+
+#### Player Balance
+```ruby
+Gameball::Player.get_player_balance("player123")
+
+```
+
+#### Player's Progress
+```ruby
+Gameball::Player.get_player_progress("player123")
+
+```
+
+#### Attach Tags to Player
+```ruby
+Gameball::Player.attach_tags("player123","VIP,Platinum")
+
+```
+
+#### Detach Tags
+```ruby
+Gameball::Player.detach_tags("player123","VIP,Platinum")
+
+```
 
 #### Sending an Event
 
@@ -56,104 +135,22 @@ Gameball::Event.send_event({
 			rooms:2
 		}
 	},
-	playerUniqueId:" player123",
-	playerAttributes:{
-		displayName:" Jon Snow",
-		email:"jon.snow@example.com",
-		dateOfBirth:"1980-09-19T00:00:00.000Z",
-		joinDate:"2019-09-19T21:06:29.158Z"
-	}
-})
-# Example 3
-Gameball::Event.send_event({
-	events:{
-		reserve:{
-			rooms:2
-		}
-	},
-	playerUniqueId:" player123",
-	playerAttributes:{
-		displayName:" Jon Snow",
-		email:"jon.snow@example.com",
-		dateOfBirth:"1980-09-19T00:00:00.000Z",
-		joinDate:"2019-09-19T21:06:29.158Z",
-		custom:{
-			location:"Miami",
-			graduationDate:"2018-07-04T21:06:29.158Z",
-			isMarried:false
-		}
-			}
+	playerUniqueId:" player123"
+	
 })
 
 
 ```
 
-#### Create a new Referral
-
-```ruby
-Gameball::Referral.create_referral({
-	playerCode:"CODE11",
-	playerUniqueId:"player456"
-}
-)
-# Example 2
-Gameball::Referral.create_referral({
-	playerCode:"CODE11",
-	playerUniqueId:"player456",
-	playerAttributes:{
-		displayName:" Tyrion Lannister",
-		firstName:"Tyrion",
-		lastName:"Lannister",
-		email:"tyrion@example.com",
-		gender:"M",
-		dateOfBirth:"1978-01-11T00:00:00.000Z",
-		joinDate:"2019-09-19T21:06:29.158Z",
-		custom:{
-			location:"Miami",
-			graduationDate:"2018-07-04T21:06:29.158Z",
-			isMarried:false
-		}
-	}
-}
-)
-```
-
-#### Reward Examples
+#### Cashback Examples
 
 ```ruby
 # Example 1
-Gameball::Transaction.reward_points({
+Gameball::Transaction.cashback({
 	playerUniqueId:"player123",
 	amount:99.98,
 	transactionId:"tra_123456789"
 })
-# Example 2
-Gameball::Transaction.reward_points({
-	playerUniqueId:"player456",
-	amount:2500,
-	transactionId:"tra_123456789",
-	playerAttributes:{
-		displayName:" Tyrion Lannister",
-		firstName:"Tyrion",
-		lastName:"Lannister",
-		email:"tyrion@example.com",
-		gender:"M",
-		dateOfBirth:"1978-01-11T00:00:00.000Z",
-		joinDate:"2019-09-19T21:06:29.158Z",
-		custom:{
-			location:"Miami",
-			graduationDate:"2018-07-04T21:06:29.158Z",
-			isMarried:false
-		}
-	}
-}
-)
-```
-
-#### Get Player Balance Example
-
-```ruby
-Gameball::Transaction.get_player_balance("player456")
 ```
 
 #### Hold Points Example
@@ -169,21 +166,29 @@ Gameball::Transaction.hold_points({
 #### Redeem Example
 
 ```ruby
+# Example 1
 Gameball::Transaction.redeem_points({
 	playerUniqueId:"player456",
-	amount:10,
 	transactionId:"tra_123456789",
 	holdReference:"2342452352435234",
+	})
+
+# Example 2
+Gameball::Transaction.redeem_points({
+	playerUniqueId:"player456",
+	transactionId:"tra_123456789",
+	redeemedAmount:12,
 	})
 ```
 
 #### Reverse Transaction Example
 
 ```ruby
-Gameball::Transaction.reverse_transaction({
-	playerUniqueId:"player456",
-	transactionId:"1234567890",
-	reversedTransactionId:"234567891"
+Gameball::Transaction.refund({
+   playerUniqueId:"player456",
+   transactionId:"1234567890",
+   reverseTransactionId:"234567891",
+   amount: nil
 }
 )
 ```
@@ -191,55 +196,120 @@ Gameball::Transaction.reverse_transaction({
 #### Reverse Hold Example
 
 ```ruby
-Gameball::Transaction.reverse_hold({
-	playerUniqueId:" player456",
-	holdReference:"9245fe4a-d402-451c-b9ed-9c1a04247482"
-}
-)
+Gameball::Transaction.reverse_hold("9245fe4a-d402-451c-b9ed-9c1a04247482")
 ```
 
-### Actions
+#### Manual Transaction Example
+
+```ruby
+Gameball::Transaction.manual_transaction({
+   playerUniqueId:"player123",
+   amount:99.98,
+   transactionId:"tra_123456789",
+   username: "admin_storename",
+   reason: "Thank You Gift"
+})
+```
+
+#### List Transactions Example
+
+```ruby
+Gameball::Transaction.list_transactions({
+   page:2,
+   limit:10
+})
+```
+
+#### Order Examples
+
+```ruby
+Gameball::Order.place_order({
+  playerUniqueId:"player456",   
+  orderId: "6253e03b",
+  totalPrice: "100",
+  totalPaid: "90",
+  totalDiscount: "0",
+  totalShipping: "0",
+  totalTax: "0", 
+  lineItems:[
+    {
+      productId:"197765",
+      tag: ["VIP"],
+      category: [
+        "natural",
+        "cosmetics"
+      ],
+      weight: "20",
+      vendor: "nike",
+      collection: ["14313", "4343"],
+    },
+    {
+      productId:"875511",
+      title: "XPS-15s",
+      category: [
+        "electronics"
+      ],
+      vendor: "Dell"
+    }
+  ],
+  discountCodes: [
+      "AU7X-8Q7L",
+      "BY3V-22GK"
+  ],
+  extra: {
+    paymentMethod: "credit card",
+    billingAddress: "Alabama"
+  },
+  redeemedAmount: 20,
+  holdReference: nil,
+  guest: false
+})
+```
+#### Leaderboard 
 
 ```ruby
 # Example 1
-Gameball::Action.send_action({
-	playerUniqueId: "your_player_unique_id",
-	events: {
-		review: {},
-		reserve: {
-			rooms: 2
-		}
-	}
-})
+Gameball::Leaderboard.get_leaderboard()
+
 # Example 2
-Gameball::Action.send_action({
-	playerUniqueId: "your_player_unique_id",
-	events: {
-		review: {},
-		reserve: {
-			rooms: 2
-		}
-	},
-	pointsTransaction: {
-		rewardAmount: 2,
-		transactionId: "234567890"
-	}
-})
-# Example 3
-Gameball::Action.send_action({
-	playerUniqueId: "your_player_unique_id",
-	events: {
-		review: {},
-		reserve: {
-			rooms: 2
-		}
-	},
-	pointsTransaction: {
-		rewardAmount: 2,
-		holdReference: "2342452352435234",
-		transactionId: "234567890"
-	}
+
+Gameball::Leaderboard.get_leaderboard({limit: 5})
 ```
+
+#### Get Player Notifications
+
+```ruby
+# Example 1
+Gameball::Notifications.get_notifications("player123")
+
+# Example 2
+Gameball::Notifications.get_notifications("player123",{
+	page: 2,
+	limit: 10
+})
+
+```
+
+#### Mark Player Notifications
+
+```ruby
+Gameball::Notifications.mark_notifications({notificationIds: ["123", "3441", "3245"]})
+
+```
+
+#### Configurations
+
+```ruby
+# Example 1
+Gameball::Configurations.get_configurations()
+
+# Example 2
+Gameball::Configurations.get_configurations({lang: "en"})
+
+```
+
+
+
 
 ### Testing
 

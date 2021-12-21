@@ -2,7 +2,11 @@ module Gameball
   class Event
     def self.sendEvent(eventBody)
       # Validating keys in incoming body
-      Gameball::Utils.validate(eventBody, ["events", "playerUniqueId"], ["playerAttributes"])
+      if(Gameball.api_version=="v3.0")
+        Gameball::Utils.validate(eventBody, ["events", "playerUniqueId"], ["mobile","email"])
+      else
+        Gameball::Utils.validate(eventBody, ["events", "playerUniqueId"], ["playerAttributes"])
+      end
       res = Gameball::Utils::request("post", "/integrations/event", eventBody)
       # Check for HTTP Success and throws error if not success
       unless res.kind_of? Net::HTTPSuccess

@@ -31,5 +31,8 @@ module Gameball
       body["hash"] = Gameball::Utils::hashBody(playerUniqueId: playerUniqueId, amount: (amount || ""), transactionTime: (transactionTime || ""))
       body
     end
+    def hash_to_query(hash)
+      return URI.encode_www_form(hash)
+    end
   end
 end
