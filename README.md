@@ -49,8 +49,8 @@ Gameball::Player.initialize_player({
       mobile: "+1234567",
       email:"jon.snow@example.com",
       gender:"M",
-      dateOfBirth:"1980-09-19T00:00:00.000Z",
-      joinDate:"2019-09-19T21:06:29.158Z",
+      dateOfBirth:DateTime.iso8601("1980-09-19T00:00:00.000Z"),
+      joinDate:DateTime.iso8601("2019-09-19T21:06:29.158Z"),
       tags: "VIP,Platinum",
     	custom:{
            location:"Miami",
@@ -69,8 +69,8 @@ Gameball::Player.initialize_player({
       lastName:"Lannister",
       email:"tyrion@example.com",
       gender:"M",
-      dateOfBirth:"1978-01-11T00:00:00.000Z",
-      joinDate:"2019-09-19T21:06:29.158Z",
+      dateOfBirth:DateTime.iso8601("1978-01-11T00:00:00.000Z"),
+      joinDate:DateTime.iso8601("2019-09-19T21:06:29.158Z"),
       custom:{
          location:"Miami",
          graduationDate:"2018-07-04T21:06:29.158Z",
