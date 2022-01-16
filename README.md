@@ -28,11 +28,11 @@ require 'gameball'
 
 Gameball.api_key="api_key"
 Gameball.transaction_key="transaction_key"
-# If using API Version 3.0
-Gameball.api_version="v3.0
+# If using API Version 2.0
+Gameball.api_version="v2.0"
 ```
 
-### Example
+### Examples
 
 #### Create Player
 
