@@ -1,7 +1,8 @@
 # This file is not to be executed, this is for offering examples for the usage of the SDK
 require "gameball"
 Gameball.api_key = "api_key"
-Gameball::transaction_key = "transaction_key"
+Gameball.transaction_key = "transaction_key"
+Gameball.api_version= "v2.0"
 # Events
 # Example 1
 Gameball::Event.send_event({
