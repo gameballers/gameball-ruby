@@ -26,7 +26,7 @@ module Gameball
   @max_retries = 1
   @read_timeout = 60
   @keep_alive_timeout = 30
-  @api_version = "v2.0"
+  @api_version = "v3.0"
   class << self
     attr_accessor :api_key
     attr_accessor :api_version
